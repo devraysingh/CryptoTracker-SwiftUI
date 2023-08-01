@@ -15,11 +15,11 @@ struct HomeView: View {
         ZStack {
             //background layer
             Color.theme.background.ignoresSafeArea()
-            
             VStack {
                 homeHeader
+                HomeStatsView(showPortfolio: $showPortfolio)
+                SearchBarView(searchText: $vm.searchText)
                 columnTitles
-          
                 if !showPortfolio {
                     allCoinList
                             .transition(.move(edge: .leading))
@@ -29,10 +29,8 @@ struct HomeView: View {
                             .transition(.move(edge: .trailing))
                 }
             }
-          
             Spacer(minLength: 0)
         }
-            
     }
 }
 
@@ -83,7 +81,6 @@ extension HomeView {
             }.listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
         }.listStyle(.plain)
     }
-    
     private var columnTitles: some View {
         HStack {
             Text("Coin")
