@@ -32,7 +32,7 @@ class NetworkingManager {
     
     static func handleURLResponse(output: URLSession.DataTaskPublisher.Output, url: URL) throws -> Data {
         guard let response = output.response as? HTTPURLResponse,
-              response.statusCode >= 200 && response.statusCode < 300 else {
+              response.statusCode >= 200 && response.statusCode < 400 else {
             throw NetworkingError.badURLResponse(url: url)
         }
         
