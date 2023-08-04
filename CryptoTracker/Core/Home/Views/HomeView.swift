@@ -107,7 +107,9 @@ extension HomeView {
         List {
             ForEach(vm.portfolioCoins) { coin in
                 CoinRowView(coin: coin, showHoldingsColumn: true)
-                    
+                    .onTapGesture {
+                        segue(coin: coin)
+                    }
                 
             }.listRowInsets(.init(top: 10, leading: 0, bottom: 10, trailing: 10))
         }.listStyle(.plain)
